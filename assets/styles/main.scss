@@ -1,0 +1,17 @@
+@import "bootstrap/scss/bootstrap";
+
+input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+img {
+    width: inherit;
+}
+
+.divider {
+    background-color: $greys_blue_extra_light_muted;
+    height: 1px;
+    margin: 28px 0;
+}

@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400&family=Rubik:wght@300;400&display=swap');
+
+h1 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $primary_arrow_navy;
+}
+
+h2 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $primary_arrow_navy;
+}
+
+h3 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $primary_arrow_navy;
+}
+
+h4 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: left;
+    text-transform: uppercase;
+    color: $secondary_purple_mid;
+}
+
+p {
+    font-family: 'Karla', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: $primary_arrow_navy;
+}
+
+a {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    color: $secondary_purple_mid;
+}
+
+.btn-small {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-align: left;
+    font-size: 12px;
+    line-height: 14px;
+    color: $primary_arrow_light;
+}
+
+.btn-medium {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-align: left;
+    font-size: 16px;
+    line-height: 19px;
+    color: $primary_arrow_light;
+}
+
+.btn-large {
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-align: left;
+    font-size: 24px;
+    line-height: 28px;
+    color: $primary_arrow_light;
+}
+
+.field-title {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: left;
+    color: $primary_arrow_light;
+}
+
+.field-info {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-align: left;
+    color: $primary_arrow_light;
+}
+
+.input {
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-align: left;
+    color: $primary_arrow_navy;
+
+    ::placeholder {
+        font-weight: 300;
+        color: $greys_navy_light_muted;
+    }
+
+    &.dark-mode {
+        color: $primary_arrow_light;
+
+        ::placeholder {
+            color: $greys_navy_light_muted;
+        }
+    }
+}
+
+.input__label {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: left;
+    color: $primary_navy_muted;
+    
+    &.dark-mode {
+        color: $greys_navy_mid_muted;
+    }
+}
+
+.input__error {
+    grid-area: error;
+    color: $arrow_error_light_bg;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+
+    &.dark-mode {
+        color: $arrow_error_dark_bg;
+    }
+}
