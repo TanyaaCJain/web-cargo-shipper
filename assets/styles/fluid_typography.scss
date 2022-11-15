@@ -1,0 +1,87 @@
+// ----
+// Sass (vundefined)
+// Compass (vundefined)
+// dart-sass (v1.6.2)
+// ----
+
+// =============================================================================
+//
+//  Fluid typography stylinng file written for Arrow Air templates.
+//
+//  PRECISE CONTROL OVER RESPONSIVE TYPOGRAPHY FOR SASS
+//  ---------------------------------------------------
+//  Code modified from Indrek Paas @indrekpaas
+//
+//  Inspired by Mike Riethmuller's Precise control over responsive typography
+//  https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+//
+//  Borrowed `strip-unit` function from Hugo Giraudel
+//  https://css-tricks.com/snippets/sass/strip-unit-function/
+//
+//  02.04.2018 Remove `screen` keyword from media queries
+//  11.08.2016 Remove redundant `&` self-reference
+//  31.03.2016 Remove redundant parenthesis from output
+//  02.10.2015 Add support for multiple properties
+//  24.04.2015 Initial release
+//
+// =============================================================================
+@use 'sass:math';
+
+@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+  
+    @media (min-width: $min-vw) {
+      @each $property in $properties {
+        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+      }
+    }
+  
+    @media (min-width: $max-vw) {
+      @each $property in $properties {
+        #{$property}: $max-value;
+      }
+    }
+}
+  
+@function strip-unit($number) {
+  @if type-of($number) == "number" and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+  
+  @return $number;
+}
+  
+/* Single property */
+html {
+  @include fluid-type(font-size, 320px, 1366px, 12px, 16px);
+  @include fluid-type(line-height, 320px, 1366px, 20px, 28px);
+}
+  
+/* Multiple properties with same values */
+h1 {
+  // @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+  @include fluid-type(font-size, 320px, 1366px, 16px, 56px);
+  @include fluid-type(line-height, 320px, 1366px, 19px, 66px);
+}
+
+h2 {
+  @include fluid-type(font-size, 320px, 1366px, 16px, 32px);
+  @include fluid-type(line-height, 320px, 1366px, 19px, 38px);
+}
+
+h3 {
+  @include fluid-type(font-size, 320px, 1366px, 18px, 24px);
+  @include fluid-type(line-height, 320px, 1366px, 14px, 28px);
+}
+
+h4 {
+  @include fluid-type(font-size, 320px, 1366px, 12px, 16px);
+  @include fluid-type(line-height, 320px, 1366px, 14px, 19px);
+}
+
+.input__label {
+  @include fluid-type(font-size, 320px, 1366px, 10px, 12px);
+  @include fluid-type(line-height, 320px, 1366px, 12px, 15px);
+}

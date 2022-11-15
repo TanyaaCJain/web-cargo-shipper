@@ -1,0 +1,120 @@
+button {
+    border-radius: 8px!important;
+    border-style: none;
+    cursor: pointer;
+}
+
+.primary-btn-sm,
+.secondary-btn-sm {
+    border-radius: 8px;
+    padding: 10px 30px 10px 30px;
+}
+
+.primary-btn-sm-icon,
+.secondary-btn-sm-icon {
+    border-radius: 8px;
+    padding: 6px 30px 6px 30px;
+}
+
+.primary-btn-lg,
+.secondary-btn-lg {
+    border-radius: 8px;
+    padding: 10px 50px 10px 50px;
+}
+
+
+.primary-btn-lg-icon,
+.secondary-btn-lg-icon {
+    border-radius: 8px;
+    padding: 6px 50px 6px 50px;
+}
+
+.primary-btn-light-bg {
+    background-color: $secondary_purple_dark;
+    color: $primary_arrow_light;
+
+    &:hover {
+        background-color: $btn_light_bg_hover;
+    }
+
+    &:active {
+        background-color: $arrow_active;
+    }
+}
+
+.secondary-btn-light-bg {
+    background-color: transparent;
+    border: 2px solid $secondary_purple_dark;
+    color: $secondary_purple_dark;
+
+    &:hover {
+        border: none;
+        background-color: $btn_light_bg_hover;
+        color: $primary_arrow_light;
+    }
+
+    &:active {
+        border: 2px solid $arrow_active;
+        color: $arrow_active;
+    }
+}
+
+.primary-btn-dark-bg {
+    background-color: $primary_arrow_blue;
+    color: $primary_arrow_light;
+
+    &:hover {
+        background-color: $arrow_hover;
+    }
+
+    &:active {
+        background-color: $arrow_active;
+    }
+}
+
+.secondary-btn-dark-bg {
+    background-color: transparent;
+    border: 2px solid $primary_blue_muted;
+    color: $primary_blue_muted;
+
+    &:hover {
+        border: none;
+        background-color: $primary_blue_muted;
+        color: $primary_arrow_navy;
+    }
+
+    &:active {
+        border: 2px solid $arrow_active;
+        color: $arrow_active;
+    }
+}
+
+.primary-btn-img-bg {
+    background-color: $primary_arrow_blue;
+    color: $primary_arrow_light;
+
+    &:hover {
+        background-color: $arrow_hover;
+    }
+
+    &:active {
+        background-color: $arrow_active;
+    }
+}
+
+.secondary-btn-img-bg {
+    background-color: transparent;
+    border: 2px solid $primary_arrow_light;
+    color: $primary_arrow_light;
+
+    &:hover {
+        border: none;
+        background-color: $primary_arrow_light;
+        color: $primary_arrow_blue;
+    }
+
+    &:active {
+        border: 2px solid $arrow_active;
+        color: $arrow_active;
+    }
+}
