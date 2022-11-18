@@ -1,0 +1,150 @@
+<template>
+    <div :class="['input-2-icon', darkMode ? 'input-dark-mode' : 'input-light-mode']">
+        <div class="input__label" :for="id">{{ Password }}</div>
+        <div class="input__div">
+            <div class="left-icon">
+                <img :src="`/_nuxt/assets/icons/icon_padlock.svg`" />
+            </div>
+            <input class="input__field"
+                :id="id"
+                :type="showPassword ? 'text' : 'password'"
+                v-model="inputValue"
+                @input="(input) => $emit('input', input.target.value)"
+                placeholder="Enter Password"
+            />
+            <div class="right-icon" @click="showPassword = !showPassword">
+                <img :src="`/_nuxt/assets/icons/icon_${showPassword ? 'show' : 'hide'}.svg`" />
+            </div>
+        </div>
+        <div class="input__error" v-if="error">{{ error }}</div>
+    </div>
+</template>
+
+<script>
+export default {
+    props: {
+        darkMode: {
+            type: Boolean,
+            default: false
+        },
+        id: {
+            type: String,
+            required: true
+        },
+        inputValue: {
+            type: String,
+            required: true,
+            default: ''
+        },
+        error: {
+            type: String,
+            required: false
+        }
+    },
+    emits: ['input'],
+    data() {
+        return {
+            showPassword: false
+        }
+    },
+}
+</script>
+
+<style scoped lang="scss">
+.input-2-icon {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "label"
+        "input-div"
+        "error";
+    gap: 5px;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+
+    .input__label {
+        grid-area: label;
+    }
+
+    .input__div {
+        grid-area: input-div;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-rows: 1fr;
+        grid-template-areas: "left-icon input-field right-icon";
+        justify-items: center;
+        align-items: center;
+        padding: 10px 15px;
+        gap: 10px;
+        background: rgba(128, 134, 237, 0.1);
+        border: 1px solid $primary_blue_muted;
+        border-radius: 25px;
+
+        &:focus-within {
+            border: 1px solid $primary_arrow_blue;
+            box-shadow: 0px 0px 0px 2px rgba(12, 9, 32, 0.25), -6px 0px 19px 8px rgba(52, 60, 194, 0.25), 6px 6px 20px rgba(255, 178, 162, 0.25);
+            border-radius: 25px;
+        }
+
+        .input__field {
+            grid-area: input-field;
+            width: 100%;
+            height: 100%;
+
+            /* if active change left-icon color */
+            &:focus ~ .left-icon {
+                color: $primary_arrow_blue;
+            }
+
+            &::placeholder ~ .left-icon {
+                color: $greys_grey_light;
+            }
+        }
+
+        .left-icon {
+            grid-area: left-icon;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 100%;
+            padding: 0 10px;
+            color: $primary_arrow_blue;
+        }
+
+        .right-icon {
+            grid-area: right-icon;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 100%;
+            padding: 0 10px;
+            color: var(--secondary_purple_mid);
+
+            svg {
+                fill: $secondary_purple_mid;
+                width: inherit;
+            }
+        }
+
+        &.input-dark-mode {
+            .input__label {
+                color: $greys_navy_light_muted;
+            }
+            .input__div {
+                background: rgba(128, 134, 237, 0.1);
+                border: 1px solid $primary_blue_muted;
+                
+                .left-icon {
+                    color: $primary_arrow_blue;
+                }
+                .input__field {
+                    color: $primary_arrow_light;
+                }
+            }
+        }
+    }
+}
+</style>
