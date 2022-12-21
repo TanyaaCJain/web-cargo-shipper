@@ -1,7 +1,7 @@
 <template>
     <div class="arrow-grid">
         <div class="arrow-grid-child-fw">
-            <h1>H1  Rubik: where are them jovel Vtol at</h1>
+            <h1>H1 Rubik: where are them jovel Vtol at</h1>
             <h2>H2 Rubik: where are them jovel Vtol at</h2>
             <h3>H3 Rubik: where are them jovel Vtol at</h3>
             <h4>H4 Rubik: where are them jovel Vtol at</h4>
