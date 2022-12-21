@@ -1,5 +1,4 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-import svgLoader from 'vite-svg-loader'
 
 export default defineNuxtConfig({
   css: [
@@ -9,7 +8,7 @@ export default defineNuxtConfig({
     '~/assets/styles/grid.scss',
     '~/assets/styles/buttons.scss',
     '~/assets/styles/inputs.scss'
-],
+  ],
   vite: {
     css: {
       preprocessorOptions: {
@@ -18,6 +17,5 @@ export default defineNuxtConfig({
         }
       }
     },
-    plugins: [svgLoader()],
   }
 })
