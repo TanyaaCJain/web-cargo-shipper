@@ -145,3 +145,15 @@ a {
         color: $arrow_error_dark_bg;
     }
 }
+
+.header-panel {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 20px;
+    color: $primary_arrow_navy;
+
+    .header-panel__active {
+        font-weight: 600;
+    }
+}
