@@ -25,7 +25,20 @@
                 <div class="divider"></div>
                 <div class="cargo-shipping">
                     <h2 class="cargo-shipping__h2">Where are we flying today?</h2>
-                    <InputIcon
+                    <HeaderButton
+                        :id="'headerButton'"
+                        :headings="arrow_flight_types"
+                        :activeIndex="activeIndex"
+                        @active-index="activeIndex = $event"
+                    />
+                    <InputDigits
+                        :id="'inputCargoPackages'"
+                        v-model="inputPackageValue"
+                        :inputValue="inputPackageValue"
+                        @input="inputPackageValue = $event"
+                        :digitLabel="'Packages'"
+                    />
+                    <!-- <InputIcon
                         :id="'inputCargoAddress'"
                         :type="'text'" 
                         v-model="inputFieldValue"
@@ -35,7 +48,7 @@
                         :error="inputFieldError"
                         :leftIcon="'search'"
                         :darkMode="true"
-                    />
+                    /> -->
                 </div>
                 <div class="divider"></div>
                 <RightImgCard
@@ -79,6 +92,7 @@ export default {
     emits: ['input'],
     data() {
         return {
+            inputPackageValue: 1,
             inputFieldValue: '',
             inputFieldError: '',
             user: {
@@ -86,7 +100,20 @@ export default {
                 rideOpen: 1,
                 rideDone: 32,
                 arrowPoints: 3182
-            }
+            },
+            arrow_flight_types: [
+                {
+                    id: 0,
+                    icon: 'vtol_cargo',
+                    text: 'Cargo',
+                },
+                {
+                    id: 1,
+                    icon: 'vtol_person',
+                    text: 'Rideshare',
+                }
+            ],
+            activeIndex: 1
         }
     },
     methods: {
