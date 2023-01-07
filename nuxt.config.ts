@@ -1,6 +1,13 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
 export default defineNuxtConfig({
+  modules: [
+    'nuxt-icons',
+    '@pinia/nuxt',
+  ],
+  imports: {
+    dirs: ['store'],
+  },
   css: [
     '~/assets/styles/main.scss',
     '~/assets/styles/fluid_typography.scss',
@@ -17,5 +24,10 @@ export default defineNuxtConfig({
         }
       }
     },
+  },
+  runtimeConfig: {
+    public: {
+      googleMapsToken: process.env.GOOGLE_MAPS_TOKEN || ""
+    }
   }
 })
