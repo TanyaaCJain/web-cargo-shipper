@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400&family=Rubik:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;800&family=Rubik:wght@300;400&display=swap');
 
 h1 {
     font-family: 'Rubik', sans-serif;
@@ -34,11 +34,35 @@ h4 {
     color: $secondary_purple_mid;
 }
 
+h5 {
+    font-family: 'Karla', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: $primary_arrow_navy;
+}
+
+h6 {
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $primary_arrow_navy;
+}
+
+.subheading-bold {
+    font-family: 'Karla', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: $primary_arrow_navy;
+    font-size: 10px;
+    line-height: 12px;
+}
+
 p {
     font-family: 'Karla', sans-serif;
     font-style: normal;
     font-weight: 400;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.1em;
     color: $primary_arrow_navy;
 }
 
@@ -50,6 +74,14 @@ a {
     text-decoration-line: underline;
     text-transform: uppercase;
     color: $secondary_purple_mid;
+}
+
+.muted-text {
+    font-family: 'Karla', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: $greys_navy_mid_muted;
 }
 
 .btn-small {
