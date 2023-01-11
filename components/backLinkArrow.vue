@@ -1,24 +1,20 @@
 <template>
     <div class="app__back-icon" @click="goBack">
-        <img :src="`/_nuxt/assets/icons/icon_back_arrow.svg`" />
+        <nuxt-icon name="icon_back_arrow"/>
     </div>
 </template>
 
-<script>
-export default {
-    methods: {
-        goBack() {
-            window.history.length > 1
-                ? this.$router.back()
-                : this.$router.push('/')
-        }
-    }
-}
+<script setup>
+const goBack = () => {
+    window.history.length > 1
+        ? window.history.go(-1)
+        : window.location.href = '/';
+};
 </script>
 
 <style lang="scss">
 .app__back-icon {
-    width: 20px;
+    font-size: 20px;
     padding-bottom: 30.5px;
 }
 </style>
