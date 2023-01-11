@@ -1,33 +1,35 @@
 <template>
-    <div class="commute-location">
+    <div :class="`commute-location ${dark ? 'dark-bg' : ''}`">
         <h2 class="start">
-            {{ departureLocation }}
+            <span :class="`${dark ? 'dark-bg' : ''}`">
+                {{ departureLocation }}
+            </span>
         </h2>
         <div class="to-arrow">
-            <img :src="`/_nuxt/assets/icons/icon_drop_right.svg`" />
+            <nuxt-icon name="icon_drop_right"/>
         </div>
         <h2 class="end">
-            {{ arrivalLocation }}
+            <span :class="`${dark ? 'dark-bg' : ''}`">
+                {{ arrivalLocation }}
+            </span>
         </h2>
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        departureLocation: {
-            type: String,
-            required: true
-        },
-        arrivalLocation: {
-            type: String,
-            required: true
-        }
+<script setup>
+const props = defineProps({
+    dark: {
+        type: Boolean,
+        default: false
     }
-}
+});
+const cargoBookingStore = useCargoBookingStore();
+const cargoBooking = cargoBookingStore.cargoBooking;
+const departureLocation = ref(cargoBooking.departure.pick_up_location);
+const arrivalLocation = ref(cargoBooking.arrival.drop_off_location);
 </script>
 
-<style  scoped lang="scss">
+<style scoped lang="scss">
 .commute-location {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -38,11 +40,15 @@ export default {
     }
 
     .to-arrow {
-        width: 20px;
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
     .end {
         text-align: center;
     }
+}
+.dark-bg {
+    color: $primary_arrow_light!important;
 }
 </style>
