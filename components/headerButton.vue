@@ -8,7 +8,7 @@
               @click="setActiveIndex(item.id)"
             >
                 <div class="header-panel__item__icon" v-if="item.icon">
-                    <img :src="`/_nuxt/assets/icons/icon_${item.icon}.svg`" />
+                    <nuxt-icon :name="`icon_${item.icon}`"/>
                 </div>
                 <div class="header-panel__item__text">{{ item.text }}</div>
             </div>
@@ -56,7 +56,7 @@ let setActiveIndex = (index) => {
         gap: 8px;
         width: 100%;
         .header-panel__item__icon {
-            width: 20px;
+            font-size: 20px;
         }
 
         &.header-panel__active {
