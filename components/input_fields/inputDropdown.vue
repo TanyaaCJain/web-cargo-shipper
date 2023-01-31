@@ -6,12 +6,12 @@
             <input class="input__field"
                 :id="id"
                 type="text"
-                v-model="inputValue"
+                v-model="inputValueObj"
                 @input="(input) => $emit('input', input.target.value)"
                 :placeholder="placeholder"
             />
             <div class="right-icon" @click="showDropdown = !showDropdown" href="#" role="button" aria-expanded="false">
-                <img :src="`/_nuxt/assets/icons/icon_${showDropdown ? 'drop_up' : 'drop_down'}.svg`" />
+                <nuxt-icon :name="`icon_${showDropdown ? 'drop_up' : 'drop_down'}.svg`" />
             </div>
         </div>
         <div class="input__dropdown" v-show="showDropdown">
@@ -23,54 +23,49 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        darkMode: {
-            type: Boolean,
-            default: false
-        },
-        id: {
-            type: String,
-            required: true
-        },
-        label: {
-            type: String,
-            required: true
-        },
-        type: {
-            type: String,
-            required: true
-        },
-        inputValue: {
-            type: String,
-            required: true,
-            default: ''
-        },
-        placeholder: {
-            type: String,
-            required: true,
-        },
-        error: {
-            type: String,
-            required: false
-        },
-        leftIcon: {
-            type: String,
-            required: false
-        },
-        rightIcon: {
-            type: String,
-            required: false
-        }
+<script setup>
+const props = defineProps({
+    darkMode: {
+        type: Boolean,
+        default: false
     },
-    emits: ['input'],
-    data() {
-        return {
-            showDropdown: false
-        }
+    id: {
+        type: String,
+        required: true
     },
-}
+    label: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    inputValue: {
+        type: String,
+        required: true,
+        default: ''
+    },
+    placeholder: {
+        type: String,
+        required: true,
+    },
+    error: {
+        type: String,
+        required: false
+    },
+    leftIcon: {
+        type: String,
+        required: false
+    },
+    rightIcon: {
+        type: String,
+        required: false
+    }
+});
+const emit = defineEmits(['input']);
+const showDropdown = ref(false);
+const inputValueObj = ref(props.inputValue);
 </script>
 
 <style scoped lang="scss">
@@ -130,7 +125,7 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 20px;
+            font-size: 20px;
             height: 100%;
             padding: 0 10px;
             color: $primary_arrow_blue;
@@ -141,15 +136,10 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 20px;
+            font-size: 20px;
             height: 100%;
             padding: 0 10px;
-            color: var(--secondary_purple_mid);
-
-            svg {
-                fill: $secondary_purple_mid;
-                width: inherit;
-            }
+            color: $secondary_purple_mid;
         }
     }
 }
