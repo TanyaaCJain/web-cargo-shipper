@@ -2,19 +2,19 @@
     <div :class="['inputs', 'input-location', darkMode ? 'input-dark-mode' : 'input-light-mode']">
         <div class="input__label" :for="id">{{ label }}</div>
         <div class="input__div">
-            <div class="left-icon">
-                <img :src="`/_nuxt/assets/icons/icon_location.svg`" />
+            <div :class="['left-icon', filled ? 'icon-color' : '']">
+                <nuxt-icon name="icon_location" />
             </div>
             <input class="input__field"
                 :id="id"
                 :type="'text'"
-                v-model="inputValue"
+                v-model="inputValueObj"
                 @input="(input) => $emit('input', input.target.value)"
                 :placeholder="placeholder"
             />
             <div class="distance__div">
                 <div class="shrink-icon">
-                    <img :src="`/_nuxt/assets/icons/icon_shrink1.svg`" />
+                    <nuxt-icon name="icon_shrink1"/>
                 </div>
                 <div class="distance-content"> {{ distance }} </div>
             </div>
@@ -23,41 +23,41 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        darkMode: {
-            type: Boolean,
-            default: false
-        },
-        id: {
-            type: String,
-            required: true
-        },
-        label: {
-            type: String,
-            required: true
-        },
-        inputValue: {
-            type: String,
-            required: true,
-            default: ''
-        },
-        placeholder: {
-            type: String,
-            required: true,
-        },
-        error: {
-            type: String,
-            required: false
-        },
-        distance: {
-            type: String,
-            required: false
-        }
+<script setup>
+const props = defineProps({
+    darkMode: {
+        type: Boolean,
+        default: false
     },
-    emits: ['input']
-}
+    id: {
+        type: String,
+        required: true
+    },
+    label: {
+        type: String,
+        required: true
+    },
+    inputValue: {
+        type: String,
+        required: true,
+        default: ''
+    },
+    placeholder: {
+        type: String,
+        required: true,
+    },
+    error: {
+        type: String,
+        required: false
+    },
+    distance: {
+        type: String,
+        required: false
+    }
+});
+const emit = defineEmits(['input']);
+const inputValueObj = ref(props.inputValue);
+const filled = computed(() => inputValueObj.value.length > 0);
 </script>
 
 <style scoped lang="scss">
@@ -84,14 +84,7 @@ export default {
             padding: 7px 21px;
 
             .shrink-icon {
-                width: 16px;
-                height: 16px;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    vertical-align: unset;
-                }
+                font-size: 16px;
             }
             .distance-content {
                 font-family: 'Rubik';

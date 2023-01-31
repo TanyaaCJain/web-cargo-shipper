@@ -39,10 +39,6 @@
             &:focus ~ .left-icon {
                 color: $primary_arrow_blue;
             }
-
-            &::placeholder ~ .left-icon {
-                color: $greys_grey_light;
-            }
         }
 
         .left-icon {
@@ -50,41 +46,44 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 20px;
-            height: 100%;
+            font-size: 20px;
             padding: 0 10px;
+            color: $greys_grey_light;
+        }
+
+        .icon-color {
             color: $primary_arrow_blue;
         }
+
 
         .right-icon {
             grid-area: right-icon;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 20px;
-            height: 100%;
+            font-size: 20px;
             padding: 0 10px;
-            color: var(--secondary_purple_mid);
-
-            svg {
-                fill: $secondary_purple_mid;
-                width: inherit;
-            }
+            color: $secondary_purple_mid;
         }
+    }
 
-        &.input-dark-mode {
-            .input__label {
-                color: $greys_navy_light_muted;
+    &.input-dark-mode {
+
+        .input__label {
+            color: $greys_navy_light_muted;
+        }
+        .input__div {
+            background: rgba(128, 134, 237, 0.1);
+            border: 1px solid $primary_blue_muted;
+            
+            .left-icon {
+                color: $primary_arrow_blue;
             }
-            .input__div {
-                background: rgba(128, 134, 237, 0.1);
-                border: 1px solid $primary_blue_muted;
-                
-                .left-icon {
-                    color: $primary_arrow_blue;
-                }
-                .input__field {
-                    color: $primary_arrow_light;
+            .input__field {
+                color: $primary_arrow_light!important;
+
+                ::placeholder {
+                    color: $greys_navy_light_muted;
                 }
             }
         }
