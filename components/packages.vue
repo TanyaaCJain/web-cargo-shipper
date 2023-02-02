@@ -78,57 +78,65 @@
   </div>
 </template>
 
-<script>
-export default {
-    props: {
-        numericWeight: {
-            type: String,
-            required: true,
-            default: ''
-        },
-        numericWeightError: {
-            type: String,
-            required: false
-        },
-        scaleWeight: {
-            type: String,
-            required: true,
-            default: ''
-        },
-        scaleWeightError: {
-            type: String,
-            required: false
-        },
-        sizeWidth: {
-            type: String,
-            required: true,
-            default: ''
-        },
-        sizeWidthError: {
-            type: String,
-            required: false
-        },
-        sizeHeight: {
-            type: String,
-            required: true,
-            default: ''
-        },
-        sizeHeightError: {
-            type: String,
-            required: false
-        },
-        sizeDepth: {
-            type: String,
-            required: true,
-            default: ''
-        },
-        sizeDepthError: {
-            type: String,
-            required: false
-        },
+<script setup>
+const props = defineProps({
+    numericWeight: {
+        type: String,
+        required: true,
+        default: ''
+    },
+    numericWeightError: {
+        type: String,
+        required: false
+    },
+    scaleWeight: {
+        type: String,
+        required: true,
+        default: ''
+    },
+    scaleWeightError: {
+        type: String,
+        required: false
+    },
+    sizeWidth: {
+        type: String,
+        required: true,
+        default: ''
+    },
+    sizeWidthError: {
+        type: String,
+        required: false
+    },
+    sizeHeight: {
+        type: String,
+        required: true,
+        default: ''
+    },
+    sizeHeightError: {
+        type: String,
+        required: false
+    },
+    sizeDepth: {
+        type: String,
+        required: true,
+        default: ''
+    },
+    sizeDepthError: {
+        type: String,
+        required: false
+    },
 
-    }
-}
+});
+const numericWeight = ref(props.numericWeight);
+const numericWeightError = ref(props.numericWeightError);
+const scaleWeight = ref(props.scaleWeight);
+const scaleWeightError = ref(props.scaleWeightError);
+const sizeWidth = ref(props.sizeWidth);
+const sizeWidthError = ref(props.sizeWidthError);
+const sizeHeight = ref(props.sizeHeight);
+const sizeHeightError = ref(props.sizeHeightError);
+const sizeDepth = ref(props.sizeDepth);
+const sizeDepthError = ref(props.sizeDepthError);
 </script>
 
 
