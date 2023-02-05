@@ -17,19 +17,10 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: 'GettingStarted',
-    data() {
-        return {
-            arrowLogo: '/logo/primary_combination_mark.png'
-        }
-    },
-    methods: {
-        startAuth() {
-            this.$router.push('/authenticate/email')
-        }
-    }
+<script setup>
+const arrowLogo = '/logo/primary_combination_mark.png';
+const startAuth = () => {
+    window.location.href = '/authenticate/email';
 }
 </script>
 

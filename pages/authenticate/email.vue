@@ -2,7 +2,7 @@
     <div class="arrow-grid">
         <div class="arrow-grid-child-fw authenticate__email">
             <div class="authenticate__back-icon" @click="goBack">
-                <img :src="`/_nuxt/assets/icons/icon_back_arrow.svg`" />
+                <nuxt-icon name="icon_back_arrow" />
             </div>
             <div class="arrow__logo">
                 <img src="/logo/dark_combination_mark.png" alt="logo" />
@@ -17,9 +17,9 @@
                 :id="'inputUsername'"
                 :label="inputFieldLabel"
                 :type="'text'" 
-                v-model="inputFieldValue"
-                :inputValue="inputFieldValue"
-                @input="inputFieldValue = $event"
+                v-model="inputFieldValueObj"
+                :inputValue="inputFieldValueObj"
+                @input="inputFieldValueObj.value = $event"
                 :placeholder="'Enter username'"
                 :error="inputFieldError"
                 :leftIcon="'account'"
@@ -35,54 +35,48 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        title: {
-            type: String,
-            required: true
-        },
-        paragraph: {
-            type: String,
-            required: true
-        },
-        inputFieldLabel: {
-            type: String,
-            required: true
-        },
-        inputFieldValue: {
-            type: String,
-            required: true
-        },
-        inputFieldError: {
-            type: String,
-            required: false
-        },
-        buttonSubmitText: {
-            type: String,
-            required: true
-        },
-        buttonSubmitAction: {
-            type: Function,
-            required: true
-        }
+<script setup>
+const props = defineProps({
+    title: {
+        type: String,
+        required: true
     },
-    data() {
-        return {
-            title: 'Login using your email address',
-            paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non massa non neque cursus interdum in eget erat.',
-            inputFieldLabel: 'Username',
-        }
+    paragraph: {
+        type: String,
+        required: true
     },
-    methods: {
-        goBack() {
-            this.$router.go(-1)
-        },
-        goNext() {
-            this.$router.push('/authenticate/password')
-        }
+    inputFieldLabel: {
+        type: String,
+        required: true
+    },
+    inputFieldValue: {
+        type: String,
+        required: true
+    },
+    inputFieldError: {
+        type: String,
+        required: false
+    },
+    buttonSubmitText: {
+        type: String,
+        required: true
+    },
+    buttonSubmitAction: {
+        type: Function,
+        required: true
     }
-}
+});
+const title = ref('Login using your email address');
+const paragraph = ref('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non massa non neque cursus interdum in eget erat.');
+const inputFieldLabel = ref('Username');
+const inputFieldValueObj = ref(props.inputFieldValue);
+// const inputFieldErrorObj = ref(props.inputFieldError);
+const goBack = () => {
+    router.go(-1);
+};
+const goNext = () => {
+    window.location.href = '/authenticate/password';
+};
 </script>
 
 <style scoped lang="scss">
@@ -101,7 +95,7 @@ export default {
     padding: 0.5rem 0;
 
     .authenticate__back-icon {
-        width: 20px;
+        font-size: 20px;
     }
 
     .arrow__logo {
