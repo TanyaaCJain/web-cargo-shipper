@@ -3,22 +3,22 @@
         <div class="arrow-grid-child-fw home">
             <div class="home__info">
                 <div class="home__info__username">
-                    <div class="happy_heart">
-                        <img src="/_nuxt/assets/icons/icon_spl_happy_heart.svg" alt="logo" />
+                    <div class="username-icon">
+                        <img src="/_nuxt/assets/icons/icon_spl_xmas_presents.svg" alt="logo" />
                     </div>
                     <h1 class="username">Hi {{user.name}}!</h1>
                 </div>
                 <div class="home__info__user-stats">
                     <div class="ride-open">
-                        <h1>{{user.rideOpen}}</h1>
+                        <h1>{{user.rideStats.rideOpen}}</h1>
                         <h3>Ride Open</h3>
                     </div>
                     <div class="ride-done">
-                        <h1>{{user.rideDone}}</h1>
+                        <h1>{{user.rideStats.rideDone}}</h1>
                         <h3>Ride Done</h3>
                     </div>
                     <div class="arrow-points">
-                        <h1>{{user.arrowPoints}}</h1>
+                        <h1>{{user.rideStats.arrowPoints}}</h1>
                         <h3>Arrow Points</h3>
                     </div>
                 </div>
@@ -26,29 +26,44 @@
                 <div class="cargo-shipping">
                     <h2 class="cargo-shipping__h2">Where are we flying today?</h2>
                     <HeaderButton
+                        class="cargo-shipping__header"
                         :id="'headerButton'"
                         :headings="arrow_flight_types"
                         :activeIndex="activeIndex"
                         @active-index="activeIndex = $event"
                     />
-                    <InputDigits
-                        :id="'inputCargoPackages'"
-                        v-model="inputPackageValue"
-                        :inputValue="inputPackageValue"
-                        @input="inputPackageValue = $event"
-                        :digitLabel="'Packages'"
-                    />
-                    <!-- <InputIcon
-                        :id="'inputCargoAddress'"
-                        :type="'text'" 
-                        v-model="inputFieldValue"
-                        :inputValue="inputFieldValue"
-                        @input="inputFieldValue = $event"
-                        :placeholder="'Where to ship to?'"
-                        :error="inputFieldError"
-                        :leftIcon="'search'"
-                        :darkMode="true"
-                    /> -->
+                    <div class="cargo-shipping__content">
+                        <div class="active-index__0" v-show="activeIndex==0">
+                            <InputDigits
+                                :id="'inputCargoPackages'"
+                                v-model="inputPackageValue"
+                                :inputValue="inputPackageValue"
+                                @input="updatePackageValue"
+                                :digitLabel="'Packages'"
+                            />
+                            <ActionButton
+                                :id="'buttonSubmit'"
+                                :buttonText="'Search Flights'"
+                                :buttonTextClass="'btn-medium'"
+                                :buttonTypeClass="'primary-btn-sm'"
+                                :buttonBgClass="'primary-btn-dark-bg'"
+                                :buttonAction="goNextCargoPackage"
+                            />
+                        </div>
+                        <div class="active-index__1" v-show="activeIndex==1">
+                            <InputIcon
+                                :id="'inputCargoAddress'"
+                                :type="'text'"
+                                v-model="inputFieldValue"
+                                :inputValue="inputFieldValue"
+                                @input="inputFieldValue = $event"
+                                :placeholder="'Where to ship to?'"
+                                :error="inputFieldError"
+                                :leftIcon="'search'"
+                                :darkMode="true"
+                            />
+                        </div>
+                    </div>
                 </div>
                 <div class="divider"></div>
                 <RightImgCard
@@ -60,69 +75,39 @@
                     :contentLink="''"
                     :contentLinkText="'Read More'"
                 />
-                <br>
-                <ActionButton
-                    :id="'buttonSubmit'"
-                    :buttonText="'Next'"
-                    :buttonTypeClass="'primary-btn-sm'"
-                    :buttonBgClass="'primary-btn-light-bg'"
-                    :buttonAction="goNext"
-                />
             </div>
         </div>
     </div>
 </template>
 
-<script>
-export default {
-    // props: {
-    //     user: {
-    //         type: Object,
-    //         required: true
-    //     },
-    //     inputFieldValue: {
-    //         type: String,
-    //         required: true
-    //     },
-    //     inputFieldError: {
-    //         type: String,
-    //         required: false
-    //     },
-    // },
-    emits: ['input'],
-    data() {
-        return {
-            inputPackageValue: 1,
-            inputFieldValue: '',
-            inputFieldError: '',
-            user: {
-                name: 'Elizah!',
-                rideOpen: 1,
-                rideDone: 32,
-                arrowPoints: 3182
-            },
-            arrow_flight_types: [
-                {
-                    id: 0,
-                    icon: 'vtol_cargo',
-                    text: 'Cargo',
-                },
-                {
-                    id: 1,
-                    icon: 'vtol_person',
-                    text: 'Rideshare',
-                }
-            ],
-            activeIndex: 1
-        }
+<script setup>
+const emit = defineEmits(['input']);
+const inputPackageValue = ref(1);
+const inputFieldValue = ref('');
+const inputFieldError = ref('');
+const userStore = useUserStore();
+const user = userStore.getUser;
+const cargoBookingStore = useCargoBookingStore();
+const arrow_flight_types = [
+    {
+        id: 0,
+        icon: 'vtol_cargo',
+        text: 'Cargo',
     },
-    methods: {
-        goNext() {
-            this.$router.push('/bookcargo')
-        }
+    {
+        id: 1,
+        icon: 'vtol_person',
+        text: 'Rideshare',
     }
-
-}
+];
+const activeIndex = ref(1);
+const goNextCargoPackage = () => {
+    window.location.href = '/bookCargo';
+};
+const updatePackageValue = (value) => {
+    inputPackageValue.value = value;
+    cargoBookingStore.setCargoPackages(value);
+};
 </script>
 
 <style scoped lang="scss">
@@ -131,7 +116,7 @@ export default {
         .home__info__username {
             display: flex;
 
-            .happy_heart {
+            .username-icon {
                 width: 30px;
                 height: 30px;
             }
@@ -173,6 +158,9 @@ export default {
             background: $primary_arrow_navy;
             border-radius: 24px;
             padding: 15px;
+            display: grid;
+            grid-template-rows: auto auto auto;
+            gap: 20px;
 
             .cargo-shipping__h2 {
                 color: $primary_arrow_light;
@@ -181,9 +169,13 @@ export default {
                 padding-bottom: 10px;
             }
 
-            // .input-2-icon {
-            //     padding: 24px 20px;
-            // }
+            .cargo-shipping__content {
+                .active-index__0 {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+
+                }
+            }
         }
     }
 }
