@@ -28,7 +28,7 @@ const props = defineProps({
     },
 });
 const emit = defineEmits(['activeIndex']);
-const activeIndexObj = ref(props.activeIndex);
+const activeIndexObj = ref(props.headings.length == 1 ? 0 : props.activeIndex);
 let setActiveIndex = (index) => {
     activeIndexObj.value = index;
     emit('activeIndex', index);
