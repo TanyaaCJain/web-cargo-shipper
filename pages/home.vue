@@ -50,7 +50,7 @@
                                 :buttonAction="goNextCargoPackage"
                             />
                         </div>
-                        <div class="active-index__1" v-show="activeIndex==1">
+                        <!-- <div class="active-index__1" v-show="activeIndex==1">
                             <InputIcon
                                 :id="'inputCargoAddress'"
                                 :type="'text'"
@@ -62,7 +62,7 @@
                                 :leftIcon="'search'"
                                 :darkMode="true"
                             />
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="divider"></div>
@@ -94,13 +94,13 @@ const arrow_flight_types = [
         icon: 'vtol_cargo',
         text: 'Cargo',
     },
-    {
-        id: 1,
-        icon: 'vtol_person',
-        text: 'Rideshare',
-    }
+    // {
+    //     id: 1,
+    //     icon: 'vtol_person',
+    //     text: 'Rideshare',
+    // }
 ];
-const activeIndex = ref(1);
+const activeIndex = ref(0);
 const goNextCargoPackage = () => {
     window.location.href = '/bookCargo';
 };
