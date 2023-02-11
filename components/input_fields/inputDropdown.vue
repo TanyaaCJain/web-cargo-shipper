@@ -1,25 +1,38 @@
 <template>
-    <!-- add input field with dropdow menu where you can input text to search in dropdown-->
     <div :class="['input-2-icon', darkMode ? 'input-dark-mode' : 'input-light-mode']">
         <div class="input__label" :for="id">{{ label }}</div>
         <div class="input__div dropdown">
-            <input class="input__field"
+            <!-- <input class="input__field"
                 :id="id"
                 type="text"
                 v-model="inputValueObj"
                 @input="(input) => $emit('input', input.target.value)"
                 :placeholder="placeholder"
-            />
+            /> -->
+            <span class="input__field">{{ inputValueObj }}</span>
             <div class="right-icon" @click="showDropdown = !showDropdown" href="#" role="button" aria-expanded="false">
-                <nuxt-icon :name="`icon_${showDropdown ? 'drop_up' : 'drop_down'}.svg`" />
+                <span v-show="showDropdown">
+                    <nuxt-icon name="icon_drop_up"/>
+                </span>
+                <span v-show="!showDropdown">
+                    <nuxt-icon name="icon_drop_down"/>
+                </span>
             </div>
         </div>
         <div class="input__dropdown" v-show="showDropdown">
             <div class="input__dropdown__item" v-for="item in items" :key="item.id">
-                {{ item.name }}
+                <span v-on="selectItem(item)">{{ item }}</span>
             </div>
         </div>
         <div class="input__error" v-if="error">{{ error }}</div>
+        {{ showDropdown }}
+        <div class="input__div dropdown">
+            <select class="input__field" v-model="inputValueObj">
+                <option v-for="(item, index) in items" :key="index" v-bind:value="item">
+                    {{ item }}
+                </option>
+            </select>
+        </div>
     </div>
 </template>
 
@@ -61,11 +74,20 @@ const props = defineProps({
     rightIcon: {
         type: String,
         required: false
+    },
+    items: {
+        type: Array,
+        required: false
     }
 });
 const emit = defineEmits(['input']);
 const showDropdown = ref(false);
 const inputValueObj = ref(props.inputValue);
+const selectItem = (item) => {
+    inputValueObj.value = item;
+    emit('input', inputValueObj.value);
+    showDropdown.value = false;
+}
 </script>
 
 <style scoped lang="scss">
@@ -77,7 +99,7 @@ const inputValueObj = ref(props.inputValue);
         "input-div"
         "error";
     gap: 5px;
-    align-items: center;
+    align-content: baseline;
     margin: 0.5rem 0;
     padding: 0.5rem 0;
 
@@ -95,7 +117,7 @@ const inputValueObj = ref(props.inputValue);
         align-items: center;
         padding: 10px 15px;
         gap: 10px;
-        background: rgba(128, 134, 237, 0.1);
+        background: #ffffff;
         border: 1px solid $primary_blue_muted;
         border-radius: 25px;
 
@@ -141,6 +163,9 @@ const inputValueObj = ref(props.inputValue);
             padding: 0 10px;
             color: $secondary_purple_mid;
         }
+    }
+    .input__dropdown {
+        background: #ffffff;
     }
 }
 </style>

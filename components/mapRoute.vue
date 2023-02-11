@@ -1,6 +1,22 @@
 <template>
     <div class="map-route">
-        <div id="map" class="map-container"></div>
+        <div id="map" class="map-container">
+            <div id="controls-panel" class="controls-panel">
+                <InputSelect
+                    :id="'departure'"
+                    :label="'Departure'"
+                    :options="departureOptions"
+                    :default="``"
+                />
+                <InputSelect
+                    :id="'arrival'"
+                    :label="'Arrival'"
+                    :options="arrivalOptions"
+                    :default="``"
+                />
+            </div>
+            <div id="map-box"></div>
+        </div>
         <div id="msg"></div>
     </div>
 </template>
@@ -12,6 +28,11 @@ const startLat = ref(59.32932349999999).value;
 const startLng = ref(18.0685808).value;
 const endLat = ref(51.5073509).value;
 const endLng = ref(-0.1277583).value;
+const cargoBookingStore = useCargoBookingStore();
+const cargoBooking = cargoBookingStore.cargoBooking;
+const flightOptions = ref(cargoBooking.flight_options);
+const departureOptions = ref(flightOptions.value.map((flightOption) => flightOption.departure_vertiport));
+const arrivalOptions = ref(flightOptions.value.map((flightOption) => flightOption.arrival_vertiport));
 const googleMapsToken = ref(config.public.googleMapsToken).value;
 const google_maps_api_url = `https://maps.googleapis.com/maps/api/js?key=${googleMapsToken}`;
 const deferMapScript = async () => {
@@ -41,7 +62,7 @@ const initMap = (startLat, startLng, endLat, endLng) => {
         scaleControl: true,
         center: center,
     };
-    const map = new google.maps.Map(document.getElementById("map"), options);
+    const map = new google.maps.Map(document.getElementById("map-box"), options);
     const icon = {
         url: '/_nuxt/assets/icons/location_marker.svg'
     };
@@ -64,6 +85,14 @@ const initMap = (startLat, startLng, endLat, endLng) => {
         strokeWeight: 3,
         map: map,
     });
+    map.setOptions({ 
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: false 
+    });
 };
 
 onMounted(async () => {
@@ -78,5 +107,17 @@ onMounted(async () => {
 .map-container {
     height: 400px;
     width: 100vw;
+    .controls-panel {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+    }
+    #map-box {
+        height: inherit;
+    }
 }
 </style>
