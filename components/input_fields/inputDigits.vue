@@ -74,9 +74,6 @@ let decrementValue = () => {
         background-color: rgba(128, 134, 237, 0.1);
         border: 1px solid $primary_arrow_blue;
         border-radius: 25px;
-        // display: flex;
-        // align-items: center;
-        // justify-content: space-between;
         display: grid;
         grid-template-columns: 10px 10px;
         grid-template-areas: "input-field arrows";
@@ -98,7 +95,6 @@ let decrementValue = () => {
             grid-template-areas:
                 "arrow-up"
                 "arrow-down";
-            // gap: 5px;
             color: $primary_arrow_light;
             font-size: 10px;
 

@@ -5,6 +5,12 @@ export const useCargoBookingStore = defineStore("cargo-booking", {
   state: () => {
     return {
       cargoBooking: {
+        flight_options: [
+          {
+            departure_vertiport: 'AMS VERT',
+            arrival_vertiport: 'BRU PAW',
+          }
+        ],
         departure: {
             date: '',
             time: '',
