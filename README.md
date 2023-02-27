@@ -18,7 +18,9 @@ npm install
 pnpm install --shamefully-hoist
 ```
 
-## Development Server
+## Development
+
+Set the environment variables in a `.env` file with reference from `docs/dotenv.md`.
 
 Start the development server on http://localhost:3000
 
