@@ -12,7 +12,7 @@
                 <h3>When</h3>
                 <div class="book-cargo__datetime">
                     <div class="active-index__0" v-show="activeIndex==0">
-                        <InputDateTime 
+                        <InputDateTime
                             :id="activeIndex"
                             :inputDate="inputArrivalDateValue"
                             @inputDate="updateArrivalDateValue"
@@ -21,7 +21,7 @@
                         />
                     </div>
                     <div class="active-index__1" v-show="activeIndex==1">
-                        <InputDateTime 
+                        <InputDateTime
                             :id="activeIndex"
                             :inputDate="inputDepartureDateValue"
                             @inputDate="updateDepartureDateValue"
@@ -41,7 +41,7 @@
                 <InputLocation
                     :id="'departureLocation'"
                     :label="'Pick-up location'"
-                    :type="'text'" 
+                    :type="'text'"
                     v-model="departureLocationObj"
                     :inputValue="departureLocationObj"
                     @input="departureLocationObj.value = $event"
@@ -53,7 +53,7 @@
                 <InputLocation
                     :id="'arrivalLocation'"
                     :label="'Drop-off location'"
-                    :type="'text'" 
+                    :type="'text'"
                     v-model="arrivalLocationObj"
                     :inputValue="arrivalLocationObj"
                     @input="arrivalLocationObj.value = $event"

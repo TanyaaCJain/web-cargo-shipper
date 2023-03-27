@@ -1,5 +1,5 @@
 <template>
-    <div class="arrow-light-blue-bg checkout-container">     
+    <div class="arrow-light-blue-bg checkout-container">
         <div class="arrow-grid">
             <div class="arrow-grid-child-fw">
                 <h2>Cargo flights checkout</h2>

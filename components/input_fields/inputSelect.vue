@@ -29,7 +29,7 @@
         </div>
     </div>
 </template>
-  
+
 <script>
 export default {
     props: {
@@ -122,7 +122,7 @@ export default {
     border: 1px solid $primary_blue_muted;
     border-radius: 25px 25px 0px 0px;
 }
-  
+
 .custom-select .items {
     color: #fff;
     border-radius: 0px 0px 6px 6px;
@@ -136,7 +136,7 @@ export default {
     right: 0;
     z-index: 1;
 }
-  
+
 .custom-select .items div {
     color: $primary_arrow_blue;
     padding-left: 1em;
@@ -148,9 +148,8 @@ export default {
     background-color: $secondary_purple_mid;
     color: $primary_arrow_light;
 }
-  
+
 .selectHide {
     display: none;
 }
 </style>
-  

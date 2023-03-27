@@ -6,8 +6,8 @@
             <h3>H3 Rubik: where are them jovel Vtol at</h3>
             <h4>H4 Rubik: where are them jovel Vtol at</h4>
             <p>
-                Facilisis volutpat elit eiusmod vulputate do sodales eleifend venenatis duis proin 
-                lacinia non. Odio mollis etiam tempor ultricies etiam auctor fringilla velit sus-pendisse 
+                Facilisis volutpat elit eiusmod vulputate do sodales eleifend venenatis duis proin
+                lacinia non. Odio mollis etiam tempor ultricies etiam auctor fringilla velit sus-pendisse
                 lectus quam molestie magna.
             </p>
             <a href="#">Link Type</a>

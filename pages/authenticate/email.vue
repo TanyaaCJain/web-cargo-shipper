@@ -16,7 +16,7 @@
             <InputIcon
                 :id="'inputUsername'"
                 :label="inputFieldLabel"
-                :type="'text'" 
+                :type="'text'"
                 v-model="inputFieldValueObj"
                 :inputValue="inputFieldValueObj"
                 @input="inputFieldValueObj.value = $event"

@@ -85,13 +85,13 @@ const initMap = (startLat, startLng, endLat, endLng) => {
         strokeWeight: 3,
         map: map,
     });
-    map.setOptions({ 
+    map.setOptions({
         zoomControl: false,
         mapTypeControl: false,
         scaleControl: false,
         streetViewControl: false,
         rotateControl: false,
-        fullscreenControl: false 
+        fullscreenControl: false
     });
 };
 

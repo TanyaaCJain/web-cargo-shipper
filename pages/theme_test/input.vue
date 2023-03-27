@@ -5,7 +5,7 @@
             <InputIcon
                 :id="'inputZero'"
                 :label="'Name'"
-                :type="'text'" 
+                :type="'text'"
                 v-model="name"
                 :inputValue="name"
                 @input="username = $event"
@@ -16,7 +16,7 @@
             <InputIcon
                 :id="'inputZeroEr'"
                 :label="'nameError'"
-                :type="'text'" 
+                :type="'text'"
                 v-model="nameError"
                 :inputValue="nameError"
                 @input="nameError = $event"
@@ -26,7 +26,7 @@
             <InputIcon
                 :id="'inputOne'"
                 :label="'Username'"
-                :type="'text'" 
+                :type="'text'"
                 v-model="username"
                 :inputValue="username"
                 @input="username = $event"
@@ -48,7 +48,7 @@
             <InputDropdown
                 :id="'inputThree'"
                 :label="'Country'"
-                :type="'text'" 
+                :type="'text'"
                 v-model="country"
                 :inputValue="country"
                 @input="country = $event"
@@ -59,7 +59,7 @@
             <InputLocation
                 :id="'inputFour'"
                 :inputLabel="'Location'"
-                :type="'text'" 
+                :type="'text'"
                 v-model="location"
                 :inputValue="location"
                 @input="location = $event"

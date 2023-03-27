@@ -2,10 +2,10 @@
     <div>
         <div class="header-panel">
             <div v-for="item in headings"
-              :id="item.id"
-              :key="item.id" class="header-panel__item"
-              :class="['header-panel__item', activeIndexObj == item.id ? 'header-panel__active' : '']"
-              @click="setActiveIndex(item.id)"
+                :id="item.id"
+                :key="item.id" class="header-panel__item"
+                :class="['header-panel__item', activeIndexObj == item.id ? 'header-panel__active' : '']"
+                @click="setActiveIndex(item.id)"
             >
                 <div class="header-panel__item__icon" v-if="item.icon">
                     <nuxt-icon :name="`icon_${item.icon}`"/>

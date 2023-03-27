@@ -11,7 +11,7 @@
             <h3>Welcome!</h3>
             <div class="button primary-btn-light-bg primary-btn-sm">
                 <div class="btn-small" @click="startAuth">Get Started</div>
-            </div> 
+            </div>
             <div class="lighting-mode"></div>
         </div>
     </div>

@@ -62,7 +62,7 @@ const filled = computed(() => inputValueObj.value.length > 0);
 
 <style scoped lang="scss">
 .input-location {
-    
+
     .input__div {
         display: grid;
         grid-template-columns: auto 1fr auto;
