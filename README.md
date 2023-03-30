@@ -22,7 +22,7 @@ pnpm install --shamefully-hoist
 
 Set the environment variables in a `.env` file with reference from `docs/dotenv.md`.
 
-Start the development server on http://localhost:3000
+Start the development server on `http://localhost:3000`
 
 ```bash
 npm run dev
@@ -42,4 +42,4 @@ Locally preview production build:
 npm run preview
 ```
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+Checkout the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
